@@ -31,10 +31,21 @@ Minecraft.generateWorld = function (world) {
     }
 }
 
+Minecraft.mouseInteractions = function() {
+
+    $(`.pixel`).on(`mouseover`, function() {
+        $(this).addClass(`hovered`);
+        $(`.hovered`).on(`mouseout`, function() {
+            $(this).removeClass(`hovered`);
+        })
+    })
+}
+
 /* Initiates the game */
 Minecraft.start = function() {
 
-    Minecraft.generateWorld(Minecraft.world)
+    Minecraft.generateWorld(Minecraft.world);
+    Minecraft.mouseInteractions();
 }
 
 Minecraft.start();
