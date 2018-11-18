@@ -17,6 +17,8 @@
     box-sizing: border-box;
     height: 50px;
     width: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .sky {
@@ -28,17 +30,17 @@
 }
 
 .tree {
-    background-color: burlywood; 
+    background-image: url(../images/log_oak.png);
 }
 
 .leaf {
-    background-color: green; 
+    background-image: url(../images/leaves.png);
 }
 
 .grass {
-    background-color: green; 
+    background-image: url(../images/grass_side.png);
 }
 
 .dirt {
-    background-color: rgb(80, 42, 12); 
+    background-image: url(../images/dirt.png);
 }

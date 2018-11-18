@@ -8,14 +8,14 @@ var Minecraft = {};
 Minecraft.world = [
     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "sky", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "sky", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "sky", "sky", "cloud", "sky", "sky", "leaf", "sky", "leaf", "sky", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "tree", "leaf", "sky", "sky",],
+    ["sky", "sky", "sky", "sky", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
+    ["sky", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
+    ["sky", "sky", "cloud", "cloud", "cloud", "sky", "leaf", "sky", "leaf", "sky", "sky", "sky",],
+    ["sky", "sky", "sky", "cloud", "sky", "sky", "leaf", "leaf", "leaf", "leaf", "sky", "sky",],
+    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "tree", "leaf", "leaf", "sky",],
     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky",],
-    ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "tree", "dirt", "dirt", "dirt",],
+    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky",],
+    ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass",],
     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",]
 ];
