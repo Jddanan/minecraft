@@ -31,6 +31,7 @@ Minecraft.generateWorld = function (world) {
     }
 }
 
+/* Space reserved for all mouse events listeners */
 Minecraft.mouseInteractions = function() {
 
     $(`.pixel`).on(`mouseover`, function() {
