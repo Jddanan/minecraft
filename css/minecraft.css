@@ -5,5 +5,38 @@
     outline: 0;
     font-size: 100%;
     vertical-align: baseline;
-    background: transparent;
+}
+
+div {
+    border: 1px solid blue;
+}
+
+.pixel {
+    box-sizing: border-box;
+    height: 50px;
+    width: 50px;
+}
+
+.sky {
+    background-color: skyblue;
+}
+
+.cloud {
+    background-color: whitesmoke;
+}
+
+.tree {
+    background-color: burlywood; 
+}
+
+.leaf {
+    background-color: green; 
+}
+
+.grass {
+    background-color: green; 
+}
+
+.dirt {
+    background-color: rgb(80, 42, 12); 
 }
