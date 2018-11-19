@@ -12,9 +12,9 @@ Minecraft.world = [
     ["sky", "sky", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky",],
     ["sky", "sky", "cloud", "cloud", "cloud", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky",],
     ["sky", "sky", "sky", "cloud", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "tree", "leaf", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky",],
+    ["sky", "sky", "stone", "sky", "sky", "sky", "sky", "leaf", "tree", "leaf", "sky", "sky",],
+    ["sky", "sky", "stone", "stone", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky",],
+    ["sky", "stone", "stone", "stone", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky",],
     ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass",],
     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",]
@@ -30,6 +30,8 @@ Minecraft.generateWorld = function (world) {
         }
     }
     $("#menu").append("<div id='shovel'>")
+    $("#menu").append("<div id='axe'>")
+    $("#menu").append("<div id='pickaxe'>")
 }
 
 /* Space reserved for all mouse events listeners */

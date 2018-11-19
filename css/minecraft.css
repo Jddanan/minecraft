@@ -17,6 +17,24 @@
     border: 1px solid black;
     height:100px;
     width:100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#axe{
+    background : url("../images/axe.png");
+    border: 1px solid black;
+    height:100px;
+    width:100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#pickaxe{
+    background : url("../images/pickaxe.png");
+    border: 1px solid black;
+    height:100px;
+    width:100px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .pixel {
     box-sizing: border-box;
@@ -48,4 +66,7 @@
 
 .dirt {
     background-image: url(../images/dirt.png);
+}
+.stone{
+    background-image: url(../images/cobblestone.jpg)
 }
