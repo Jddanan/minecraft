@@ -29,24 +29,48 @@ Minecraft.generateWorld = function (world) {
             $(`.row:nth-child(${i})`).append(`<div class='pixel ${Minecraft.world[i][j]}'>`);
         }
     }
+    $("#menu").append("<div id='shovel'>")
 }
 
 /* Space reserved for all mouse events listeners */
-Minecraft.mouseInteractions = function() {
+Minecraft.mouseInteractions = function () {
 
-    $(`.pixel`).on(`mouseover`, function() {
+    $(`.pixel`).on(`mouseover`, function () {
         $(this).addClass(`hovered`);
-        $(`.hovered`).on(`mouseout`, function() {
+        $(`.hovered`).on(`mouseout`, function () {
             $(this).removeClass(`hovered`);
         })
     })
+    $('#shovel').on('click', function () {
+        $(".dirt").on("click", function () {
+            $(this).addClass("sky") // change here to stock the value
+            $(this).removeClass("dirt")
+        })
+        $(".grass").on("click", function () {
+            $(this).addClass("sky") // change here to stock the value
+            $(this).removeClass("grass")
+        })
+    });
+    $('#axe').on('click', function () {
+        $(".tree").on("click", function () {
+            $(this).addClass("sky") // change here to stock the value
+            $(this).removeClass("tree")
+        })
+    });
+    $('#pickaxe').on('click', function () {
+        $(".stone").on("click", function () {
+            $(this).addClass("sky") // change here to stock the value
+            $(this).removeClass("stone")
+        })
+    });
 }
 
 /* Initiates the game */
-Minecraft.start = function() {
+Minecraft.start = function () {
 
     Minecraft.generateWorld(Minecraft.world);
     Minecraft.mouseInteractions();
 }
+
 
 Minecraft.start();

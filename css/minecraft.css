@@ -12,7 +12,12 @@
     box-sizing: border-box;
     transition: all 0.2s ease-in-out;    
 }
-
+#shovel{
+    background : url("../images/shovel.png");
+    border: 1px solid black;
+    height:100px;
+    width:100px;
+}
 .pixel {
     box-sizing: border-box;
     height: 50px;
