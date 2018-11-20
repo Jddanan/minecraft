@@ -16,16 +16,19 @@
     background-repeat: no-repeat;
     height:5vw;
     width: 5vw;
+    cursor: pointer;
 }
-
+.tools{
+    border:1px solid black;
+}
 #world {
     height: 100vh;
 }
 
 .pixel {
     box-sizing: border-box;
-    height: 4vw;
-    width: 4vw;
+    height: 3vw;
+    width: 3vw;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -43,6 +46,9 @@
 }
 #pickaxe{
     background : url("../images/pickaxe.png");
+}
+#shear{
+    background : url("../images/shears.png");
 }
 .sky {
     background-color: skyblue;
