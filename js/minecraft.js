@@ -37,6 +37,12 @@ Minecraft.generateWorld = function (world) {
     $("#menu").append("<div id='axe' class='tools'>");
     $("#menu").append("<div id='pickaxe' class='tools'>");
     $("#menu").append("<div id='shear' class='tools'>");
+    $("#menu2").append("<div id='leavesCounter' class='blocks'>");
+    $("#menu2").append("<div id='stoneCounter' class='blocks'>");
+    $("#menu2").append("<div id='woodCounter' class='blocks'>");
+    $("#menu2").append("<div id='dirtCounter' class='blocks'>");
+    $("#menu2").append("<div id='grassCounter' class='blocks'>");
+    
 
 }
 
@@ -50,7 +56,7 @@ Minecraft.mouseInteractions = function () {
         })
     })
     $('#shovel').on('click', function () {
-
+        $(".pixel").off("click")
         $(".dirt").on("click", function () {
             $(this).addClass("sky") // change here to stock the value
             $(this).removeClass("dirt")
@@ -59,20 +65,24 @@ Minecraft.mouseInteractions = function () {
             $(this).addClass("sky") // change here to stock the value
             $(this).removeClass("grass")
         })
+        
     });
     $('#axe').on('click', function () {
+        $(".pixel").off("click")
         $(".tree").on("click", function () {
             $(this).addClass("sky") // change here to stock the value
             $(this).removeClass("tree")
         })
     });
     $('#pickaxe').on('click', function () {
+        $(".pixel").off("click")
         $(".stone").on("click", function () {
             $(this).addClass("sky") // change here to stock the value
             $(this).removeClass("stone")
         })
     });
     $('#shear').on('click', function () {
+        $(".pixel").off("click")
         $(".leaf").on("click", function () {
             $(this).addClass("sky") // change here to stock the value
             $(this).removeClass("leaf")

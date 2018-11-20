@@ -11,12 +11,13 @@
     height: 100vh;
 }
 
-#menu .tools {
+#menu .tools, #menu2 .blocks {
     background-size: contain;
     background-repeat: no-repeat;
     height:5vw;
     width: 5vw;
     cursor: pointer;
+    margin-top : 2vh;
 }
 .tools{
     border:1px solid black;
@@ -58,21 +59,21 @@
     background-color: whitesmoke;
 }
 
-.tree {
+.tree, #woodCounter {
     background-image: url(../images/log_oak.png);
 }
 
-.leaf {
+.leaf, #leavesCounter {
     background-image: url(../images/leaves.png);
 }
 
-.grass {
+.grass, #grassCounter {
     background-image: url(../images/grass_side.png);
 }
 
-.dirt {
+.dirt, #dirtCounter {
     background-image: url(../images/dirt.png);
 }
-.stone {
+.stone,#stoneCounter {
     background-image: url(../images/cobblestone.jpg)
 }
