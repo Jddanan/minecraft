@@ -2,6 +2,7 @@ $(document).ready(function () {
 
 });
 
+/* Variables */
 var Minecraft = {};
 
 /* HARDCODED board */
@@ -23,15 +24,16 @@ Minecraft.world = [
 /* Generates the world from HARDCODED board */
 Minecraft.generateWorld = function (world) {
 
+
     for (var i = 0; i < world.length; i++) {
-        $(`#world`).append(`<div class='row justify-content-center'>`);
+        $(`#world`).append(`<div class='row row-world justify-content-center'>`);
         for (var j = 0; j < world[0].length; j++) {
-            $(`.row:nth-child(${i})`).append(`<div class='pixel ${Minecraft.world[i][j]}'>`);
+            $(`.row-world:nth-child(${i + 1})`).append(`<div class='pixel ${Minecraft.world[i][j]}'>`);
         }
     }
-    $("#menu").append("<div id='shovel'>")
-    $("#menu").append("<div id='axe'>")
-    $("#menu").append("<div id='pickaxe'>")
+    $("#menu").append("<div id='shovel' class='tools'>");
+    $("#menu").append("<div id='axe' class='tools'>");
+    $("#menu").append("<div id='pickaxe' class='tools'>");
 }
 
 /* Space reserved for all mouse events listeners */
@@ -44,6 +46,7 @@ Minecraft.mouseInteractions = function () {
         })
     })
     $('#shovel').on('click', function () {
+
         $(".dirt").on("click", function () {
             $(this).addClass("sky") // change here to stock the value
             $(this).removeClass("dirt")
@@ -67,10 +70,46 @@ Minecraft.mouseInteractions = function () {
     });
 }
 
+/* Remove event listners of other tools */
+Minecraft.usingTools = function () {
+
+    $(`.pixel`).on(`mouseover`, function () {
+        $(this).addClass(`hovered`);
+        $(`.hovered`).on(`mouseout`, function () {
+            $(this).removeClass(`hovered`);
+        })
+    })
+
+    class Tool {
+        constructor(name, blocks) {
+            this.name = name;
+            this.blocks = blocks;
+        }
+        addEventListener(blocks) {
+            $(this.name).on(`click`, function () {
+                $(`.pixel`).off(`click`);
+                for (var i = 0; i < blocks.length; i++) {
+                    $(blocks[i]).on(`click`, function () {
+                        $(blocks[i]).addClass("sky"); // change here to stock the value
+                        $(blocks[i]).removeClass(blocks[i]);
+                    })
+                }
+            })
+        }
+    }
+    var shovel = new Tool(`#shovel`, [`.dirt`, `.grass`]);
+    var axe = new Tool(`#axe`, [`.tree`, `.leaf`]);
+    var pickaxe = new Tool(`#pickaxe`, [`.stone`]);
+    shovel.addEventListener(shovel.blocks);
+    axe.addEventListener(axe.blocks);
+    pickaxe.addEventListener(pickaxe.blocks);
+}
+
 /* Initiates the game */
 Minecraft.start = function () {
 
     Minecraft.generateWorld(Minecraft.world);
+    // Minecraft.usingTools();
     Minecraft.mouseInteractions();
 }
 

@@ -7,43 +7,43 @@
     vertical-align: baseline;
 }
 
+#menu {
+    height: 100vh;
+}
+
+#menu .tools {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:5vw;
+    width: 5vw;
+}
+
+#world {
+    height: 100vh;
+}
+
+.pixel {
+    box-sizing: border-box;
+    height: 4vw;
+    width: 4vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .hovered {
-    border: 1px solid black;
+    border: 1px solid white;
     box-sizing: border-box;
     transition: all 0.2s ease-in-out;    
 }
 #shovel{
     background : url("../images/shovel.png");
-    border: 1px solid black;
-    height:100px;
-    width:100px;
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 #axe{
     background : url("../images/axe.png");
-    border: 1px solid black;
-    height:100px;
-    width:100px;
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 #pickaxe{
     background : url("../images/pickaxe.png");
-    border: 1px solid black;
-    height:100px;
-    width:100px;
-    background-size: contain;
-    background-repeat: no-repeat;
 }
-.pixel {
-    box-sizing: border-box;
-    height: 50px;
-    width: 50px;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
 .sky {
     background-color: skyblue;
 }
@@ -67,6 +67,6 @@
 .dirt {
     background-image: url(../images/dirt.png);
 }
-.stone{
+.stone {
     background-image: url(../images/cobblestone.jpg)
 }
