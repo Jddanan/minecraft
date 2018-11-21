@@ -124,7 +124,6 @@ Minecraft.mouseInteractions = function () {
 Minecraft.start = function () {
 
     Minecraft.generateWorld(Minecraft.world);
-    //Minecraft.usingTools();
     Minecraft.mouseInteractions();
 }
 
