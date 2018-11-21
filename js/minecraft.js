@@ -4,23 +4,30 @@ $(document).ready(function () {
 
 /* Variables */
 var Minecraft = {};
+var tools = new Map([
+    [`shovel`, `dirt`],
+    [`axe`, `tree`],
+    [`pickaxe`, `stone`],
+    [`shear`, `leaf`],
+    [`mower`, `grass`],
+])
 
 /* HARDCODED board */
 Minecraft.world = [
-    ["sky","sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky","sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky","sky", "sky", "sky", "sky", "sky", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky","leaf", "leaf", "leaf", "sky", "cloud", "cloud", "cloud", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky","leaf", "leaf", "leaf", "sky", "sky", "sky", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky","leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky",],
-    ["sky","leaf", "tree", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky",],
-    ["sky","sky", "tree", "sky", "sky", "sky", "sky", "sky", "stone", "sky", "sky", "sky", "sky", "leaf", "tree", "leaf", "sky", "sky",],
-    ["sky","sky", "tree", "sky", "stone", "sky", "sky", "sky", "stone", "stone", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky",],
-    ["sky","sky", "tree", "sky", "stone", "stone", "sky", "stone", "stone", "stone", "sky", "sky", "sky", "sky", "tree", "stone", "sky", "sky",],
-    ["grass","grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass",],
-    ["dirt","dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
-    ["dirt","dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
-    ["dirt","dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
+    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
+    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
+    ["sky", "sky", "sky", "sky", "sky", "sky", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
+    ["sky", "leaf", "leaf", "leaf", "sky", "cloud", "cloud", "cloud", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky",],
+    ["sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
+    ["sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky",],
+    ["sky", "leaf", "tree", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky",],
+    ["sky", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "stone", "sky", "sky", "sky", "sky", "leaf", "tree", "leaf", "sky", "sky",],
+    ["sky", "sky", "tree", "sky", "stone", "sky", "sky", "sky", "stone", "stone", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky",],
+    ["sky", "sky", "tree", "sky", "stone", "stone", "sky", "stone", "stone", "stone", "sky", "sky", "sky", "sky", "tree", "stone", "sky", "sky",],
+    ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass",],
+    ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
+    ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
+    ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
 ];
 
 /* Generates the world from HARDCODED board */
@@ -37,12 +44,13 @@ Minecraft.generateWorld = function (world) {
     $("#menu").append("<div id='axe' class='tools'>");
     $("#menu").append("<div id='pickaxe' class='tools'>");
     $("#menu").append("<div id='shear' class='tools'>");
-    $("#menu2").append("<div id='leavesCounter' class='blocks'>");
-    $("#menu2").append("<div id='stoneCounter' class='blocks'>");
-    $("#menu2").append("<div id='woodCounter' class='blocks'>");
-    $("#menu2").append("<div id='dirtCounter' class='blocks'>");
-    $("#menu2").append("<div id='grassCounter' class='blocks'>");
-    
+    $("#menu").append("<div id='mower' class='tools'>");                // tondeuse added
+    $("#menu2").append("<div id='dirt' class='blocks'>");
+    $("#menu2").append("<div id='tree' class='blocks'>");
+    $("#menu2").append("<div id='stone' class='blocks'>");
+    $("#menu2").append("<div id='leaf' class='blocks'>");
+    $("#menu2").append("<div id='grass' class='blocks'>");
+
 
 }
 
@@ -53,83 +61,70 @@ Minecraft.mouseInteractions = function () {
         $(this).addClass(`hovered`);
         $(`.hovered`).on(`mouseout`, function () {
             $(this).removeClass(`hovered`);
-        })
-    })
-    $('#shovel').on('click', function () {
-        $(".pixel").off("click")
-        $(".dirt").on("click", function () {
-            $(this).addClass("sky") // change here to stock the value
-            $(this).removeClass("dirt")
-        })
-        $(".grass").on("click", function () {
-            $(this).addClass("sky") // change here to stock the value
-            $(this).removeClass("grass")
-        })
-        
+        });
     });
-    $('#axe').on('click', function () {
-        $(".pixel").off("click")
-        $(".tree").on("click", function () {
-            $(this).addClass("sky") // change here to stock the value
-            $(this).removeClass("tree")
-        })
+
+    $(`.tools`).on(`click`, function (e) {
+        var tool = e.target.id;
+        $(".pixel").off("click");
+        $(`.${tools.get(tool)}`).on("click", function (e) {
+            $(e.target).addClass(`sky`);
+            $(e.target).removeClass(tools.get(tool));
+        });
     });
-    $('#pickaxe').on('click', function () {
-        $(".pixel").off("click")
-        $(".stone").on("click", function () {
-            $(this).addClass("sky") // change here to stock the value
-            $(this).removeClass("stone")
-        })
-    });
-    $('#shear').on('click', function () {
-        $(".pixel").off("click")
-        $(".leaf").on("click", function () {
-            $(this).addClass("sky") // change here to stock the value
-            $(this).removeClass("leaf")
-        })
+
+    $(`.blocks`).on(`click`, function (e) {
+        var block = e.target.id;
+        $(".pixel").off("click");
+        $(`.sky`).on("click", function (e) {
+            $(e.target).addClass(`${block}`);
+            $(e.target).removeClass(`sky`);
+        });
     });
 }
 
-/* Remove event listners of other tools */
-Minecraft.usingTools = function () {
+// $('#shovel').on('click', function () {
+//     $(".pixel").off("click");
+//     $(".dirt").on("click", function () {
+//         $(this).addClass("sky") // change here to stock the value
+//         $(this).removeClass("dirt")
+//     })
+// });
+// $('#axe').on('click', function () {
+//     $(".pixel").off("click");
+//     $(".tree").on("click", function () {
+//         $(this).addClass("sky") // change here to stock the value
+//         $(this).removeClass("tree")
+//     })
+// });
+// $('#pickaxe').on('click', function () {
+//     $(".pixel").off("click");
+//     $(".stone").on("click", function () {
+//         $(this).addClass("sky") // change here to stock the value
+//         $(this).removeClass("stone")
+//     })
+// });
+// $('#shear').on('click', function () {
+//     $(".pixel").off("click");
+//     $(".leaf").on("click", function () {
+//         $(this).addClass("sky") // change here to stock the value
+//         $(this).removeClass("leaf")
+//     })
+// });
+// $('#mower').on('click', function () {
+//     $(".pixel").off("click");
+//     $(".grass").on("click", function () {
+//         $(this).addClass("sky") // change here to stock the value
+//         $(this).removeClass("grass")
+//     })
+// });
 
-    $(`.pixel`).on(`mouseover`, function () {
-        $(this).addClass(`hovered`);
-        $(`.hovered`).on(`mouseout`, function () {
-            $(this).removeClass(`hovered`);
-        })
-    })
-
-    class Tool {
-        constructor(name, blocks) {
-            this.name = name;
-            this.blocks = blocks;
-        }
-        addEventListener(blocks) {
-            $(this.name).on(`click`, function () {
-                $(`.pixel`).off(`click`);
-                for (var i = 0; i < blocks.length; i++) {
-                    $(blocks[i]).on(`click`, function () {
-                        $(blocks[i]).addClass("sky"); // change here to stock the value
-                        $(blocks[i]).removeClass(blocks[i]);
-                    })
-                }
-            })
-        }
-    }
-    var shovel = new Tool(`#shovel`, [`.dirt`, `.grass`]);
-    var axe = new Tool(`#axe`, [`.tree`, `.leaf`]);
-    var pickaxe = new Tool(`#pickaxe`, [`.stone`]);
-    shovel.addEventListener(shovel.blocks);
-    axe.addEventListener(axe.blocks);
-    pickaxe.addEventListener(pickaxe.blocks);
-}
 
 /* Initiates the game */
 Minecraft.start = function () {
 
     Minecraft.generateWorld(Minecraft.world);
-    // Minecraft.usingTools();
+    //Minecraft.usingTools();
     Minecraft.mouseInteractions();
 }
 

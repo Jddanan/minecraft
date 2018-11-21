@@ -35,7 +35,8 @@
 }
 
 .hovered {
-    border: 1px solid white;
+    transition: 0.2s all ease-in-out;
+    opacity: 0.7;
     box-sizing: border-box;
     transition: all 0.2s ease-in-out;    
 }
@@ -51,6 +52,9 @@
 #shear{
     background : url("../images/shears.png");
 }
+#mower{
+    background : url("../images/mower.gif");
+}
 .sky {
     background-color: skyblue;
 }
@@ -59,21 +63,21 @@
     background-color: whitesmoke;
 }
 
-.tree, #woodCounter {
+.tree, #tree {
     background-image: url(../images/log_oak.png);
 }
 
-.leaf, #leavesCounter {
+.leaf, #leaf {
     background-image: url(../images/leaves.png);
 }
 
-.grass, #grassCounter {
+.grass, #grass {
     background-image: url(../images/grass_side.png);
 }
 
-.dirt, #dirtCounter {
+.dirt, #dirt {
     background-image: url(../images/dirt.png);
 }
-.stone,#stoneCounter {
+.stone,#stone {
     background-image: url(../images/cobblestone.jpg)
 }
