@@ -148,10 +148,13 @@ Minecraft.startModal = function () {
         $('#startModal').css(`display`, `none`); // doesn't work with the class hide
         $('.modal-content').addClass("hide");
         $(".modal-backdrop").addClass("hide");
+        $('.modal-instruction').css(`display`, `none`);
     })
     $("#instruction").on("click", function () {
-        $('.modal-instruction').css(`display`, `block`); // doesn't work with the class hide
-        $('.modal-content').addClass("hide");
+        $('#instructionModal').css(`display`, `block`); // doesn't work with the class hide
+        $("#continue").addClass("hide");
+        $("#instruction").addClass("hide");
+
     });
 };
 

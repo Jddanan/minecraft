@@ -21,7 +21,8 @@
 }
 .modal-instruction{
     display:none;
-    align-self: center;
+    margin-left:50%;
+    
 
 }
 .button{
@@ -34,6 +35,10 @@
     padding : 0 15px;
     background-color : rgba(98,252,33);
     cursor: pointer;
+}
+#text{
+    align-self: center;
+
 }
 .button:hover {
     text-shadow: 0 0 2px 0 rgb(120,120,120);
