@@ -11,9 +11,7 @@ Minecraft.tools = new Map([
     [`shear`, `leaf`],
     [`mower`, `grass`],
 ]);
-
-Minecraft.INIT_BLOCK_COUNT = new Map(
-);
+Minecraft.INIT_BLOCK_COUNT = new Map();
 
 /* HARDCODED board */
 Minecraft.world = [
@@ -61,17 +59,17 @@ Minecraft.generateWorld = function (world) {
 
 }
 
-/* Space reserved for all mouse events listeners */
+/* All events listeners */
 Minecraft.mouseInteractions = function () {
 
-    $(`.pixel`).on(`mouseover`, function () {
+    $(`.pixel`).on(`mouseover`, function () {           // mouseover
         $(this).addClass(`hovered`);
         $(`.hovered`).on(`mouseout`, function () {
             $(this).removeClass(`hovered`);
         });
     });
 
-    $(`.tools`).on(`click`, function (e) {
+    $(`.tools`).on(`click`, function (e) {              // Select tool and destroyable block type 
         var tool = e.target.id;
         var block = Minecraft.tools.get(tool);
         $(`.tools`).removeClass(`selected`);
@@ -87,21 +85,31 @@ Minecraft.mouseInteractions = function () {
 
     });
 
-    $(`.blocks`).on(`click`, function (e) {
+    $(`.blocks`).on(`click`, function (e) {             // Allow user to build blocks on sky pixels if he has enough inventory
         var block = e.target.id;
         $(`.tools`).removeClass(`selected`);
         $(`.blocks`).removeClass(`selected`);
         $(`#${block}`).addClass(`selected`);
         $(".pixel").off("click");
         $(`.sky`).on("click", function (e) {
-            $(e.target).addClass(`${block}`);
-            $(e.target).removeClass(`sky`);
-            Minecraft.counterBlocks();
-            Minecraft.counterBlocks(block);
+            console.log($(`#counter-${block}`).text())
+            if ($(`#counter-${block}`).text() > 0) {
+                $(e.target).addClass(`${block}`);
+                $(e.target).removeClass(`sky`);
+                Minecraft.counterBlocks(block);
+            } else {
+                $(`#counter-${block}`).css(`color`, `red`);
+                $(`#counter-${block}`).css(`fontSize`, `firebrick`);
+                setTimeout(() => {
+                    $(`#counter-${block}`).css(`color`, `white`);
+                    $(`#counter-${block}`).css(`fontSize`, `initial`);
+                }, 300);
+            }
         });
     });
 }
 
+/* Count each initial types blocks in the 2D array */
 Minecraft.initCounterBlocks = function () {
 
     for (var i = 0; i < Minecraft.world.length; i++) {
@@ -117,7 +125,7 @@ Minecraft.initCounterBlocks = function () {
     console.log(Minecraft.INIT_BLOCK_COUNT)
 }
 
-
+/* Count blocks with same class as targeted pixel */
 Minecraft.counterBlocks = function (block) {
 
     var START_BLOCK = Minecraft.INIT_BLOCK_COUNT.get(block);
@@ -131,15 +139,9 @@ Minecraft.counterBlocks = function (block) {
     counterBlock.text(START_BLOCK - counter)
 }
 
-/* Initiates the game */
-Minecraft.start = function () {
-    Minecraft.startModal();
-    Minecraft.generateWorld(Minecraft.world);
-    Minecraft.mouseInteractions();
-    Minecraft.initCounterBlocks();
-}
-
+/* Start modal + instructions */
 Minecraft.startModal = function () {
+
     $('#startModal').modal({
         backdrop: 'static',
         keyboard: false
@@ -157,5 +159,15 @@ Minecraft.startModal = function () {
 
     });
 };
+
+/* Initiates the game */
+Minecraft.start = function () {
+    Minecraft.startModal();
+    Minecraft.generateWorld(Minecraft.world);
+    Minecraft.mouseInteractions();
+    Minecraft.initCounterBlocks();
+}
+
+
 
 Minecraft.start();
