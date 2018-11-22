@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 /* Variables */
 var Minecraft = {};
-var tools = new Map([
+Minecraft.tools = new Map([
     [`shovel`, `dirt`],
     [`axe`, `tree`],
     [`pickaxe`, `stone`],
@@ -67,9 +67,9 @@ Minecraft.mouseInteractions = function () {
     $(`.tools`).on(`click`, function (e) {
         var tool = e.target.id;
         $(".pixel").off("click");
-        $(`.${tools.get(tool)}`).on("click", function (e) {
+        $(`.${Minecraft.tools.get(tool)}`).on("click", function (e) {
             $(e.target).addClass(`sky`);
-            $(e.target).removeClass(tools.get(tool));
+            $(e.target).removeClass(Minecraft.tools.get(tool));
         });
     });
 
