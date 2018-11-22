@@ -10,18 +10,32 @@
     <title>title</title>
 </head>
 
-<div class="modal " id="startModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal" id="startModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="button-container">
-                <button type="button" class="button continue" class="btn btn-primary">Play !!</button><br/>
+                <button type="button" class="button continue" id="continue" class="btn btn-primary">Play !!</button><br />
                 <button type="button" class="button" id="instruction" class="btn btn-primary">Instructions</button>
             </div>
         </div>
-        <div class="modal-instruction">
-            <p>Write here the instructions.</p>
+    </div>
+</div>
+<div class="modal hide" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <p id="text">write instruction here</p>
             <div class="button-container">
-                    <button type="button" class="button continue" class="btn btn-primary">Play !!</button><br/>
+                <button type="button" class="button continue" id="closeInstruction" class="btn btn-primary">Play</button><br />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="winModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <p>YOU WIN WELL PLAY</p>
+            <div class="button-container">
+                <button type="button" class="button continue" id="playAgain" class="btn btn-primary">Play Again</button><br />
             </div>
         </div>
     </div>
