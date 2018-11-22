@@ -14,9 +14,14 @@
     width: 80px;
     cursor: pointer;
     margin-top : 2px;
+
 }
-.tools{
+.tools , .blocks {
     border:1px solid black;
+}
+
+.selected {
+    border: 3px solid firebrick;
 }
 
 .pixel {

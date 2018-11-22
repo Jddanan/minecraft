@@ -66,7 +66,9 @@ Minecraft.mouseInteractions = function () {
 
     $(`.tools`).on(`click`, function (e) {
         var tool = e.target.id;
-        $(".pixel").off("click");
+        $(`.tools`).removeClass(`selected`);
+        $(`.blocks`).removeClass(`selected`);
+        $(`#${tool}`).addClass(`selected`);
         $(`.${Minecraft.tools.get(tool)}`).on("click", function (e) {
             $(e.target).addClass(`sky`);
             $(e.target).removeClass(Minecraft.tools.get(tool));
@@ -75,6 +77,9 @@ Minecraft.mouseInteractions = function () {
 
     $(`.blocks`).on(`click`, function (e) {
         var block = e.target.id;
+        $(`.tools`).removeClass(`selected`);
+        $(`.blocks`).removeClass(`selected`);
+        $(`#${block}`).addClass(`selected`);
         $(".pixel").off("click");
         $(`.sky`).on("click", function (e) {
             $(e.target).addClass(`${block}`);
