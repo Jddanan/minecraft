@@ -111,15 +111,15 @@ Minecraft.startModal = function () {
         backdrop: 'static',
         keyboard: false
     })
-    $("#continue").on("click", function () {
-        if (got.difficulty !== 0) {
-            $('#startModal').css(`display`, `none`);
-            $(".modal-backdrop").css(`display`, `none`);
-            got.start();
-        } else {
-            alert("Please select a difficulty")
-        }
+    $(".continue").on("click", function () {
+        $('#startModal').css(`display`, `none`); // doesn't work with the class hide
+        $('.modal-content').addClass("hide");
+        $(".modal-backdrop").addClass("hide");
     })
+    $("#instruction").on("click", function () {
+        $('.modal-instruction').css(`display`, `block`); // doesn't work with the class hide
+        $('.modal-content').addClass("hide");
+    });
 };
 
 Minecraft.start();
