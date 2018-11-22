@@ -10,7 +10,10 @@ Minecraft.tools = new Map([
     [`pickaxe`, `stone`],
     [`shear`, `leaf`],
     [`mower`, `grass`],
-])
+]);
+
+Minecraft.INIT_BLOCK_COUNT = new Map(
+);
 
 /* HARDCODED board */
 Minecraft.world = [
@@ -43,7 +46,7 @@ Minecraft.generateWorld = function (world) {
     $("#menu").append("<div id='axe' class='tools'>");
     $("#menu").append("<div id='pickaxe' class='tools'>");
     $("#menu").append("<div id='shear' class='tools'>");
-    $("#menu").append("<div id='mower' class='tools'>");                // tondeuse added
+    $("#menu").append("<div id='mower' class='tools'>");
     $("#menu2").append("<div id='dirt' class='blocks'>");
     $("#dirt").append("<span id='counter-dirt' class='counter'>");
     $("#menu2").append("<div id='tree' class='blocks'>");
@@ -54,6 +57,7 @@ Minecraft.generateWorld = function (world) {
     $("#leaf").append("<span id='counter-leaf' class='counter'>");
     $("#menu2").append("<div id='grass' class='blocks'>");
     $("#grass").append("<span id='counter-grass' class='counter'>");
+    $(".counter").text(0);
 
 }
 
@@ -69,14 +73,18 @@ Minecraft.mouseInteractions = function () {
 
     $(`.tools`).on(`click`, function (e) {
         var tool = e.target.id;
+        var block = Minecraft.tools.get(tool);
         $(`.tools`).removeClass(`selected`);
         $(`.blocks`).removeClass(`selected`);
         $(`#${tool}`).addClass(`selected`);
-        $(`.${Minecraft.tools.get(tool)}`).on("click", function (e) {
+        $(".pixel").off("click");
+        $(`.${block}`).on("click", function (e) {
             $(e.target).addClass(`sky`);
-            $(e.target).removeClass(Minecraft.tools.get(tool));
+            $(e.target).removeClass(block);
+            Minecraft.counterBlocks(block);
+
         });
-        
+
     });
 
     $(`.blocks`).on(`click`, function (e) {
@@ -88,15 +96,39 @@ Minecraft.mouseInteractions = function () {
         $(`.sky`).on("click", function (e) {
             $(e.target).addClass(`${block}`);
             $(e.target).removeClass(`sky`);
+            Minecraft.counterBlocks();
+            Minecraft.counterBlocks(block);
         });
-        //counterBlocks();
     });
 }
 
-Minecraft.counterBlocks = function () {
+Minecraft.initCounterBlocks = function () {
 
-    console.log(`.pixel:nth-child(0)`)
-    console.log(`.pixel:nth-child()`)
+    for (var i = 0; i < Minecraft.world.length; i++) {
+        for (var j = 0; j < Minecraft.world[i].length; j++) {
+            var getValue = Minecraft.INIT_BLOCK_COUNT.get(Minecraft.world[i][j]);
+            if (typeof getValue !== "number") {
+                Minecraft.INIT_BLOCK_COUNT.set(Minecraft.world[i][j], 1);
+            } else {
+                Minecraft.INIT_BLOCK_COUNT.set(Minecraft.world[i][j], getValue + 1);
+            }
+        }
+    }
+    console.log(Minecraft.INIT_BLOCK_COUNT)
+}
+
+
+Minecraft.counterBlocks = function (block) {
+
+    var START_BLOCK = Minecraft.INIT_BLOCK_COUNT.get(block);
+    var counterBlock = $(`#counter-${block}`);
+    console.log(block)
+    var counter = 0;
+    for (i = 0; i < $(`.${block}`).length; i++) {
+        counter++
+        console.log(counter);
+    }
+    counterBlock.text(START_BLOCK - counter)
 }
 
 /* Initiates the game */
@@ -104,6 +136,7 @@ Minecraft.start = function () {
     Minecraft.startModal();
     Minecraft.generateWorld(Minecraft.world);
     Minecraft.mouseInteractions();
+    Minecraft.initCounterBlocks();
 }
 
 Minecraft.startModal = function () {

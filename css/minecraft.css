@@ -53,6 +53,13 @@
 }
 .tools , .blocks {
     border:1px solid black;
+    position: relative;
+}
+
+.counter {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 
 .selected {
