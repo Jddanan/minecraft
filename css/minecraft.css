@@ -28,8 +28,8 @@
 
 .pixel {
     box-sizing: border-box;
-    height: 3vw;
-    width: 3vw;
+    height: 20px;
+    width: 20px;
     background-size: contain;
     background-repeat: no-repeat;
     transition: 0.2s all ease-in-out;
