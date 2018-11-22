@@ -33,7 +33,6 @@ Minecraft.world = [
 /* Generates the world from HARDCODED board */
 Minecraft.generateWorld = function (world) {
 
-
     for (var i = 0; i < world.length; i++) {
         $(`#world`).append(`<div class='row row-world justify-content-center'>`);
         for (var j = 0; j < world[0].length; j++) {
@@ -50,8 +49,6 @@ Minecraft.generateWorld = function (world) {
     $("#menu2").append("<div id='stone' class='blocks'>");
     $("#menu2").append("<div id='leaf' class='blocks'>");
     $("#menu2").append("<div id='grass' class='blocks'>");
-
-
 }
 
 /* Space reserved for all mouse events listeners */
@@ -83,49 +80,31 @@ Minecraft.mouseInteractions = function () {
     });
 }
 
-// $('#shovel').on('click', function () {
-//     $(".pixel").off("click");
-//     $(".dirt").on("click", function () {
-//         $(this).addClass("sky") // change here to stock the value
-//         $(this).removeClass("dirt")
-//     })
-// });
-// $('#axe').on('click', function () {
-//     $(".pixel").off("click");
-//     $(".tree").on("click", function () {
-//         $(this).addClass("sky") // change here to stock the value
-//         $(this).removeClass("tree")
-//     })
-// });
-// $('#pickaxe').on('click', function () {
-//     $(".pixel").off("click");
-//     $(".stone").on("click", function () {
-//         $(this).addClass("sky") // change here to stock the value
-//         $(this).removeClass("stone")
-//     })
-// });
-// $('#shear').on('click', function () {
-//     $(".pixel").off("click");
-//     $(".leaf").on("click", function () {
-//         $(this).addClass("sky") // change here to stock the value
-//         $(this).removeClass("leaf")
-//     })
-// });
-// $('#mower').on('click', function () {
-//     $(".pixel").off("click");
-//     $(".grass").on("click", function () {
-//         $(this).addClass("sky") // change here to stock the value
-//         $(this).removeClass("grass")
-//     })
-// });
+Minecraft.counterBlocks = function () {
 
+}
 
 /* Initiates the game */
 Minecraft.start = function () {
-
+    Minecraft.startModal();
     Minecraft.generateWorld(Minecraft.world);
     Minecraft.mouseInteractions();
 }
 
+Minecraft.startModal = function () {
+    $('#startModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
+    $("#continue").on("click", function () {
+        if (got.difficulty !== 0) {
+            $('#startModal').css(`display`, `none`);
+            $(".modal-backdrop").css(`display`, `none`);
+            got.start();
+        } else {
+            alert("Please select a difficulty")
+        }
+    })
+};
 
 Minecraft.start();

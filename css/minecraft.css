@@ -6,7 +6,32 @@
     font-size: 100%;
     vertical-align: baseline;
 }
-
+.modal-backdrop{
+    background-image: url("../images/minecraft_background.jpg");
+    background-size:cover ;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-attachment: fixed; 
+    background-position: center;
+    opacity: 1!important; /* Can't do other way because of Bootstrap */
+}
+.modal-content{
+    background-color: rgba(34,139,34, 0.5);
+    height:500px;
+}
+.button{
+    align-self: center;
+    width : 25vw;
+    margin :5px;
+    font-size: 2vw;
+    border-radius:10px;
+    border : 1px solid white;
+    padding : 0 15px;
+}
+.button-container{
+    margin : auto;
+    
+}
 #menu .tools, #menu2 .blocks {
     background-size: contain;
     background-repeat: no-repeat;
