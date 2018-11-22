@@ -45,10 +45,16 @@ Minecraft.generateWorld = function (world) {
     $("#menu").append("<div id='shear' class='tools'>");
     $("#menu").append("<div id='mower' class='tools'>");                // tondeuse added
     $("#menu2").append("<div id='dirt' class='blocks'>");
+    $("#dirt").append("<span id='counter-dirt' class='counter'>");
     $("#menu2").append("<div id='tree' class='blocks'>");
+    $("#tree").append("<span id='counter-tree' class='counter'>");
     $("#menu2").append("<div id='stone' class='blocks'>");
+    $("#stone").append("<span id='counter-stone' class='counter'>");
     $("#menu2").append("<div id='leaf' class='blocks'>");
+    $("#leaf").append("<span id='counter-leaf' class='counter'>");
     $("#menu2").append("<div id='grass' class='blocks'>");
+    $("#grass").append("<span id='counter-grass' class='counter'>");
+
 }
 
 /* Space reserved for all mouse events listeners */
@@ -70,6 +76,7 @@ Minecraft.mouseInteractions = function () {
             $(e.target).addClass(`sky`);
             $(e.target).removeClass(Minecraft.tools.get(tool));
         });
+        
     });
 
     $(`.blocks`).on(`click`, function (e) {
@@ -82,11 +89,14 @@ Minecraft.mouseInteractions = function () {
             $(e.target).addClass(`${block}`);
             $(e.target).removeClass(`sky`);
         });
+        //counterBlocks();
     });
 }
 
 Minecraft.counterBlocks = function () {
 
+    console.log(`.pixel:nth-child(0)`)
+    console.log(`.pixel:nth-child()`)
 }
 
 /* Initiates the game */
