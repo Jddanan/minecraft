@@ -55,7 +55,7 @@ Minecraft.generateWorld = function (world) {
     $("#leaf").append("<span id='counter-leaf' class='counter'>");
     $("#menu2").append("<div id='grass' class='blocks'>");
     $("#grass").append("<span id='counter-grass' class='counter'>");
-    $(".counter").text(0);
+    $(".counter").text(0);                              // Because initially user doesn't have blocks
 
 }
 
@@ -80,9 +80,7 @@ Minecraft.mouseInteractions = function () {
             $(e.target).addClass(`sky`);
             $(e.target).removeClass(block);
             Minecraft.counterBlocks(block);
-
         });
-
     });
 
     $(`.blocks`).on(`click`, function (e) {             // Allow user to build blocks on sky pixels if he has enough inventory
@@ -92,21 +90,23 @@ Minecraft.mouseInteractions = function () {
         $(`#${block}`).addClass(`selected`);
         $(".pixel").off("click");
         $(`.sky`).on("click", function (e) {
-            console.log($(`#counter-${block}`).text())
             if ($(`#counter-${block}`).text() > 0) {
                 $(e.target).addClass(`${block}`);
                 $(e.target).removeClass(`sky`);
                 Minecraft.counterBlocks(block);
             } else {
-                $(`#counter-${block}`).css(`color`, `red`);
-                $(`#counter-${block}`).css(`fontSize`, `firebrick`);
-                setTimeout(() => {
-                    $(`#counter-${block}`).css(`color`, `white`);
-                    $(`#counter-${block}`).css(`fontSize`, `initial`);
-                }, 300);
+                Minecraft.warnUserAboutEmptiness(block);
             }
         });
     });
+}
+
+Minecraft.warnUserAboutEmptiness = function (block) {
+
+    $(`#counter-${block}`).addClass(`warning`);
+    setTimeout(() => {
+        $(`#counter-${block}`).removeClass(`warning`);
+    }, 300);
 }
 
 /* Count each initial types blocks in the 2D array */
@@ -122,7 +122,6 @@ Minecraft.initCounterBlocks = function () {
             }
         }
     }
-    console.log(Minecraft.INIT_BLOCK_COUNT)
 }
 
 /* Count blocks with same class as targeted pixel */
@@ -130,11 +129,9 @@ Minecraft.counterBlocks = function (block) {
 
     var START_BLOCK = Minecraft.INIT_BLOCK_COUNT.get(block);
     var counterBlock = $(`#counter-${block}`);
-    console.log(block)
     var counter = 0;
     for (i = 0; i < $(`.${block}`).length; i++) {
         counter++
-        console.log(counter);
     }
     counterBlock.text(START_BLOCK - counter)
 }
