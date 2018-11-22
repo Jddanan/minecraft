@@ -16,8 +16,13 @@
     opacity: 1!important; /* Can't do other way because of Bootstrap */
 }
 .modal-content{
-    background-color: rgba(34,139,34, 0.5);
-    height:500px;
+    background-color: rgba(0,0,0, 0 );
+    border : 0;
+}
+.modal-instruction{
+    display:none;
+    align-self: center;
+
 }
 .button{
     align-self: center;
@@ -27,10 +32,15 @@
     border-radius:10px;
     border : 1px solid white;
     padding : 0 15px;
+    background-color : rgba(98,252,33);
+    cursor: pointer;
+}
+.button:hover {
+    text-shadow: 0 0 2px 0 rgb(120,120,120);
 }
 .button-container{
     margin : auto;
-    
+
 }
 #menu .tools, #menu2 .blocks {
     background-size: contain;
@@ -99,6 +109,9 @@
 }
 .stone,#stone {
     background-image: url(../images/cobblestone.jpg)
+}
+.hide{
+    display:none;
 }
 
 @media only screen and (max-width: 1500px) {
