@@ -58,6 +58,22 @@
 }
 .tools , .blocks {
     border:1px solid black;
+    position: relative;
+}
+
+.counter {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5vw;
+}
+
+.warning {
+    color: red;
+    font-size: 2vw;
+    transition: 0.2s all;
 }
 
 .selected {
@@ -100,6 +116,10 @@
 
 .cloud {
     background-color: whitesmoke;
+}
+
+.water {
+    background-image: url(../images/water.png);
 }
 
 .tree, #tree {
