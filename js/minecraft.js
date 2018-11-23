@@ -43,7 +43,7 @@ Minecraft.generateWorld = function (world) {
     $("#menu").append("<div id='axe' class='tools'>");
     $("#menu").append("<div id='pickaxe' class='tools'>");
     $("#menu").append("<div id='shear' class='tools'>");
-    $("#menu").append("<div id='mower' class='tools'>");                // tondeuse added
+    $("#menu").append("<div id='mower' class='tools'>");                // mower added
     $("#menu2").append("<div id='dirt' class='blocks'>");
     $("#dirt").append("<span id='counter-dirt' class='counter'>");
     $("#menu2").append("<div id='tree' class='blocks'>");
@@ -75,8 +75,10 @@ Minecraft.mouseInteractions = function () {
         $(`.${Minecraft.tools.get(tool)}`).on("click", function (e) {
             $(e.target).addClass(`sky`);
             $(e.target).removeClass(Minecraft.tools.get(tool));
+            // $(e.target).css('cursor', `url(./images/${tool}.png),auto`)
+            // console.log($(e.target).css('cursor', `url(./images/${tool}.png),auto`))
         });
-        
+
     });
 
     $(`.blocks`).on(`click`, function (e) {
