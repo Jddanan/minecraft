@@ -118,6 +118,10 @@
     background-color: whitesmoke;
 }
 
+.water {
+    background-image: url(../images/water.png);
+}
+
 .tree, #tree {
     background-image: url(../images/log_oak.png);
 }
