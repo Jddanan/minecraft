@@ -7,7 +7,7 @@
     vertical-align: baseline;
 }
 div {
-    border: solid black 1px;
+    border: 0.2px solid blue;
 }
 .modal-backdrop{
     background-image: url("../images/minecraft_background.jpg");
