@@ -77,6 +77,7 @@ Minecraft.mouseInteractions = function () {
         $(`.tools`).removeClass(`selected`);
         $(`.blocks`).removeClass(`selected`);
         $(`#${tool}`).addClass(`selected`);
+        $(`#world`).css('cursor', `url(./images/${tool}.png),auto`);
         $(".pixel").off("click");
         $(`.${block}`).on("click", function (e) {
             $(e.target).addClass(`sky`);
@@ -94,6 +95,8 @@ Minecraft.mouseInteractions = function () {
             block = block[1];
         }
         $(`#${block}`).addClass(`selected`);
+        $(`#world`).css('cursor', 'auto');   // Here if we want to change the cursor with the block image
+        // $(`#world`).css('cursor', `url(./images/${block}.png),auto`);
         $(".pixel").off("click");
         $(`.sky`).on("click", function (e) {
             if ($(`#counter-${block}`).text() > 0) {
@@ -154,6 +157,7 @@ Minecraft.startModal = function () {
         $('.modal-content').addClass("hide");
         $(".modal-backdrop").addClass("hide");
         $('.modal-instruction').css(`display`, `none`);
+        $('#instructionModal').css(`display`, `none`);
     })
     $("#instruction").on("click", function () {
         $('#instructionModal').css(`display`, `block`); // doesn't work with the class hide

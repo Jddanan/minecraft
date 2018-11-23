@@ -109,7 +109,7 @@ div {
     background : url("../images/pickaxe.png");
 }
 #shear{
-    background : url("../images/shears.png");
+    background : url("../images/shear.png");
 }
 #mower{
     background : url("../images/mower.gif");
@@ -142,7 +142,7 @@ div {
     background-image: url(../images/dirt.png);
 }
 .stone,#stone {
-    background-image: url(../images/cobblestone.jpg)
+    background-image: url(../images/stone.png)
 }
 .hide{
     display:none;
