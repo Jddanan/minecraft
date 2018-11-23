@@ -6,6 +6,9 @@
     font-size: 100%;
     vertical-align: baseline;
 }
+div {
+    border: solid black 1px;
+}
 .modal-backdrop{
     background-image: url("../images/minecraft_background.jpg");
     background-size:cover ;
@@ -47,6 +50,7 @@
     margin : auto;
 
 }
+
 #menu .tools, #menu2 .blocks {
     background-size: contain;
     background-repeat: no-repeat;
@@ -64,7 +68,7 @@
 .counter {
     position: absolute;
     bottom: 10%;
-    right: 10%;
+    right: 15%;
     color: white;
     font-weight: 600;
     font-size: 1.5vw;
