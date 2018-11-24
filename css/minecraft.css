@@ -192,11 +192,10 @@ body{
         width: 50px;
     }  
 }
-
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 840px) {
     .pixel {
-        height: 20px;
-        width: 20px;
+        height: 15px;
+        width: 15px;
     }
     #menu .tools, #menu2 .blocks{
         height: 35px;
@@ -206,11 +205,11 @@ body{
 
 @media only screen and (max-width: 450px) {
     .pixel {
-        height: 15px;
-        width: 15px;
+        height: 10px;
+        width: 10px;
     }
     #menu .tools, #menu2 .blocks{
-        height: 25px;
-        width: 25px;
+        height: 18px;
+        width: 18px;
     }
 }
