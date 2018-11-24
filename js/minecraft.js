@@ -17,7 +17,7 @@ Minecraft.tools = new Map([
 ]);
 Minecraft.INIT_BLOCK_COUNT = new Map();     // will be automatically updated if world is changed
 
-/* HARDCODED board MVP we left ot for you to see how we previously generated our boad */
+/* HARDCODED board MVP we left it for you to see how we previously generated our boad */
 // Minecraft.world = [
 //     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
 //     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
@@ -62,11 +62,11 @@ Minecraft.randomWorld = function () {
     while (treeTwoInit >= waterInit && treeTwoInit <= waterInit + 4 || (treeTwoInit >= treeOneInit - 3 && treeTwoInit <= treeOneInit + 3)) {        // makes sure the second tree wont build on top of water or first tree
         treeTwoInit = Math.floor(Math.random() * (width - 2) + 1);
     }
-    while (stoneOneInit >= waterInit - 1 && stoneOneInit <= waterInit + 4 || stoneOneInit >= treeOneInit - 1 && stoneOneInit <= treeOneInit + 1 || stoneOneInit >= treeTwoInit - 1 && stoneOneInit <= treeTwoInit + 1) {
+    while (stoneOneInit >= waterInit - 1 && stoneOneInit <= waterInit + 4 || stoneOneInit >= treeOneInit - 2 && stoneOneInit <= treeOneInit + 2 || stoneOneInit >= treeTwoInit - 2 && stoneOneInit <= treeTwoInit + 2) {
         stoneOneInit = Math.floor(Math.random() * (width - 2) + 1);
     }
 
-    while (stoneTwoInit >= waterInit - 1 && stoneTwoInit <= waterInit + 4 || stoneTwoInit >= treeOneInit - 1 && stoneTwoInit <= treeOneInit + 1 || stoneTwoInit >= treeTwoInit - 1 && stoneTwoInit <= treeTwoInit + 1 || stoneTwoInit >= stoneOneInit - 2 && stoneTwoInit <= stoneOneInit + 3) {
+    while (stoneTwoInit >= waterInit - 1 && stoneTwoInit <= waterInit + 4 || stoneTwoInit >= treeOneInit - 2 && stoneTwoInit <= treeOneInit + 2 || stoneTwoInit >= treeTwoInit - 2 && stoneTwoInit <= treeTwoInit + 2 || stoneTwoInit >= stoneOneInit - 2 && stoneTwoInit <= stoneOneInit + 3) {
         stoneTwoInit = Math.floor(Math.random() * (width - 2) + 1);
     }
 
