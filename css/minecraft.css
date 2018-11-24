@@ -6,6 +6,9 @@
     font-size: 100%;
     vertical-align: baseline;
 }
+body{
+    font-family: 'Press Start 2P', cursive;
+}
 div {
     border: 0.2px solid blue;
 }
@@ -38,10 +41,13 @@ div {
     padding : 0 15px;
     background-color : rgba(98,252,33);
     cursor: pointer;
+    position : relative;
+    margin-left: 50%;
+    transform:translateX(-50%);
 }
-#text{
+.text{
     align-self: center;
-
+    font-size: 10px;
 }
 .button:hover {
     text-shadow: 0 0 2px 0 rgb(120,120,120);
