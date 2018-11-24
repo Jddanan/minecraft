@@ -8,6 +8,12 @@
 }
 body{
     font-family: 'Press Start 2P', cursive;
+    background-image: url("../images/minecraft_background.jpg");
+    background-size:cover ;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center;
+
 }
 div {
     border: 0.2px solid blue;
@@ -28,8 +34,9 @@ div {
 .modal-instruction{
     display:none;
     margin-left:50%;
-    
-
+}
+.world{
+    margin : auto;
 }
 .button{
     align-self: center;
@@ -64,6 +71,7 @@ div {
     width: 80px;
     cursor: pointer;
     margin-top : 2px;
+    background-color: rgba(98,252,33,0.5);
 
 }
 .tools , .blocks {
