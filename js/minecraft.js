@@ -189,6 +189,8 @@ Minecraft.mouseInteractions = function () {
         $(`#world`).css('cursor', `url(./images/${tool}.png),auto`);
         $(".pixel").off("click");
         $(`.${block}`).on("click", function (e) {
+            $(`#sound`).attr(`src`, `./sound/${block}.ogg`);
+            document.getElementById("sound").play();
             $(e.target).addClass(`sky`);
             $(e.target).removeClass(block);
             Minecraft.counterBlocks(block);
@@ -209,9 +211,12 @@ Minecraft.mouseInteractions = function () {
         $(".pixel").off("click");
         $(`.sky`).on("click", function (e) {
             if ($(`#counter-${block}`).text() > 0) {
+                $(`#sound`).attr(`src`, `./sound/${block}.ogg`);
+                document.getElementById("sound").play();
                 $(e.target).addClass(`${block}`);
                 $(e.target).removeClass(`sky`);
                 Minecraft.counterBlocks(block);
+                
             } else {
                 Minecraft.warnUserAboutEmptiness(block);
             }
@@ -269,7 +274,7 @@ Minecraft.startModal = function () {
         $('#instructionModal').css(`display`, `none`);
     })
     $("#instruction").on("click", function () {
-        $('#instructionModal').css(`display`, `block`); 
+        $('#instructionModal').css(`display`, `block`);
         $("#continue").addClass("hide");
         $("#instruction").addClass("hide");
         $("#textIntro").addClass("hide");

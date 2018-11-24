@@ -7,9 +7,6 @@
     vertical-align: baseline;
 }
 
-div {
-    border: 1px solid blue;
-}
 body{
     font-family: 'Press Start 2P', cursive;
     background-image: url("../images/minecraft_background.jpg");
@@ -17,7 +14,6 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed; 
     background-position: center;
-
 }
 
 .modal-backdrop{
@@ -29,20 +25,25 @@ body{
     background-position: center;
     opacity: 1!important; /* Can't do other way because of Bootstrap */
 }
+
 .modal-content{
     background-color: rgba(0,0,0, 0 );
     border : 0;
 }
-#textIntro {
+
+#textIntro, #textInstruction {
     font-size: 20px;
 }
+
 .modal-instruction{
     display:none;
     margin-left:50%;
 }
+
 .world{
     margin : auto;
 }
+
 .button{
     align-self: center;
     width : 27vw;
@@ -57,16 +58,18 @@ body{
     margin-left: 50%;
     transform:translateX(-50%);
 }
+
 .text{
     align-self: center;
     font-size: 10px;
 }
+
 .button:hover {
     text-shadow: 0 0 2px 0 rgb(120,120,120);
 }
+
 .button-container{
     margin : auto;
-
 }
 
 #menu .tools, #menu2 .blocks {
@@ -77,7 +80,6 @@ body{
     cursor: pointer;
     margin-top : 2px;
     background-color: rgba(98,252,33,0.5);
-
 }
 .tools , .blocks {
     border:1px solid black;
@@ -96,7 +98,7 @@ body{
 .warning {
     color: red;
     font-size: 2vw;
-    transition: 0.2s all;
+    transition: 0.1s all;
 }
 
 .selected {
@@ -118,21 +120,27 @@ body{
     box-sizing: border-box;
     transition: all 0.2s ease-in-out;    
 }
+
 #shovel{
     background : url("../images/shovel.png");
 }
+
 #axe{
     background : url("../images/axe.png");
 }
+
 #pickaxe{
     background : url("../images/pickaxe.png");
 }
+
 #shear{
     background : url("../images/shear.png");
 }
+
 #mower{
     background : url("../images/mower.png");
 }
+
 .sky {
     background-color: skyblue;
 }
@@ -142,7 +150,7 @@ body{
 }
 
 .water {
-    background-image: url(../images/water.png);
+    background-color: rgb(56, 75, 181);
 }
 
 .tree, #tree {
@@ -173,6 +181,7 @@ body{
         width: 40px;
     }
 }
+
 @media only screen and (max-width: 1250px) {
     .pixel {
         height: 30px;
@@ -181,9 +190,9 @@ body{
     #menu .tools, #menu2 .blocks{
         height: 50px;
         width: 50px;
-    }
-    
+    }  
 }
+
 @media only screen and (max-width: 800px) {
     .pixel {
         height: 20px;
@@ -194,6 +203,7 @@ body{
         width: 35px;
     }
 }
+
 @media only screen and (max-width: 450px) {
     .pixel {
         height: 15px;

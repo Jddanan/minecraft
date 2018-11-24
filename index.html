@@ -34,7 +34,7 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <p class="text">
+                <p class="text" id="textInstruction">
                     You start with a shovel and at the end you win<br />
                     How is this possible ? Easy ! In the world of minecraft each block are destroyable.<br />
                     Who know what's behind them ... <br />
@@ -57,15 +57,15 @@
         </div>
     </div>
     <div class="modal" id="loseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <p>You Lose ... Want to try again ?</p>
-                    <div class="button-container">
-                        <button type="button" class="button continue" id="tryAgain" class="btn btn-primary">Play Again</button><br />
-                    </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <p>You Lose ... Want to try again ?</p>
+                <div class="button-container">
+                    <button type="button" class="button continue" id="tryAgain" class="btn btn-primary">Play Again</button><br />
                 </div>
             </div>
         </div>
+    </div>
     <div class="container-fluid world">
         <div class="row">
             <div id="world" class="col-10 scrolling-wrapper">
@@ -75,6 +75,9 @@
         </div>
     </div>
 
+
+    <!-- Audio element -->
+    <audio id="sound" src=""></audio>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
