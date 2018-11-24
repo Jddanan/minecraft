@@ -17,7 +17,7 @@ body{
 }
 
 .loading{
-    background-image:url("https://loading.io/spinners/dual-ring/lg.dual-ring-loader.gif");
+    background-image:url("https://cdn.dribbble.com/users/4221/screenshots/2847133/loading.gif");
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -38,7 +38,7 @@ body{
 }
 
 #textIntro, #textInstruction {
-    font-size: 20px;
+    font-size: 2vw;
 }
 
 .modal-instruction{
