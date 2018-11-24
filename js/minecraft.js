@@ -216,7 +216,6 @@ Minecraft.mouseInteractions = function () {
                 $(e.target).addClass(`${block}`);
                 $(e.target).removeClass(`sky`);
                 Minecraft.counterBlocks(block);
-                
             } else {
                 Minecraft.warnUserAboutEmptiness(block);
             }
