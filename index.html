@@ -5,52 +5,77 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/minecraftia" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/minecraft.css">
     <title>title</title>
 </head>
 
-<div class="modal" id="startModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="button-container">
-                <button type="button" class="button continue" id="continue" class="btn btn-primary">Play !!</button><br />
-                <button type="button" class="button" id="instruction" class="btn btn-primary">Instructions</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal hide" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <p id="text">write instruction here</p>
-            <div class="button-container">
-                <button type="button" class="button continue" id="closeInstruction" class="btn btn-primary">Play</button><br />
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal" id="winModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <p>YOU WIN WELL PLAY</p>
-            <div class="button-container">
-                <button type="button" class="button continue" id="playAgain" class="btn btn-primary">Play Again</button><br />
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container-fluid">
-    <div class="row">
-        <div  id="world" class="col-10 scrolling-wrapper">
-        </div>
-        <div id="menu" class="col-1"></div>
-        <div id="menu2" class="col-1"></div>
-    </div>
-</div>
-
 <body>
+    <div class="modal" id="startModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <p class="text" id="textIntro">
+                    \•._.••´¯``•.¸¸.•`2D Minecraft`•.¸¸.•´´¯`••._.•<br /><br />
+                    This game is a project made by Jdd & JrM in one week for an assignment @ITC Coding Bootcamp.<br /><br />
+                    Legend holds that he who finds the great axe has the power to smash trees and to starts a great
+                    adventure.
+                </p>
+                <div class="button-container">
+
+                    <button type="button" class="button continue" id="continue" class="btn btn-primary">Play !!</button><br />
+                    <button type="button" class="button" id="instruction" class="btn btn-primary">Instructions</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal hide" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <p class="text">
+                    You start with a shovel and at the end you win<br />
+                    How is this possible ? Easy ! In the world of minecraft each block are destroyable.<br />
+                    Who know what's behind them ... <br />
+                    Find the diamond to prove that you are worth it.
+                </p>
+                <div class="button-container">
+                    <button type="button" class="button continue" id="closeInstruction" class="btn btn-primary">Play</button><br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="winModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <p>YOU WIN WELL PLAY</p>
+                <div class="button-container">
+                    <button type="button" class="button continue" id="playAgain" class="btn btn-primary">Play Again</button><br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="loseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <p>You Lose ... Want to try again ?</p>
+                    <div class="button-container">
+                        <button type="button" class="button continue" id="tryAgain" class="btn btn-primary">Play Again</button><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="container-fluid world">
+        <div class="row">
+            <div id="world" class="col-10 scrolling-wrapper">
+            </div>
+            <div id="menu" class="col-1"></div>
+            <div id="menu2" class="col-1"></div>
+        </div>
+    </div>
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
