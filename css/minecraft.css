@@ -16,6 +16,12 @@ body{
     background-position: center;
 }
 
+.loading{
+    background-image:url("https://loading.io/spinners/dual-ring/lg.dual-ring-loader.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .modal-backdrop{
     background-image: url("../images/minecraft_background.jpg");
     background-size:cover ;

@@ -1,11 +1,7 @@
-$(document).ready(function () {
 
-});
 
 /* Variables */
 var Minecraft = {};
-Minecraft.MAX_HEIGHT = 16;
-Minecraft.MAX_WIDTH = 25;
 Minecraft.selectedHeight = 14;
 Minecraft.selectedWidth = 23;
 Minecraft.tools = new Map([
@@ -244,6 +240,7 @@ Minecraft.initCounterBlocks = function () {
             }
         }
     }
+    $('#startModal').removeClass(`loading`);
 }
 
 /* Count blocks with same class as targeted pixel */
@@ -261,6 +258,7 @@ Minecraft.counterBlocks = function (block) {
 /* Start modal + instructions */
 Minecraft.startModal = function () {
 
+    $('#startModal').addClass(`loading`);
     $('#startModal').modal({
         backdrop: 'static',
         keyboard: false
@@ -291,5 +289,6 @@ Minecraft.start = function () {
     Minecraft.initCounterBlocks();
 }
 
-
-Minecraft.start();
+$(document).ready(function () {
+    Minecraft.start();
+});
