@@ -4,8 +4,10 @@ $(document).ready(function () {
 
 /* Variables */
 var Minecraft = {};
-var MAX_HEIGHT = 16;
-var MAX_WIDTH = 25;
+Minecraft.MAX_HEIGHT = 16;
+Minecraft.MAX_WIDTH = 25;
+Minecraft.selectedHeight = 14;
+Minecraft.selectedWidth = 23;
 Minecraft.tools = new Map([
     [`shovel`, `dirt`],
     [`axe`, `tree`],
@@ -15,23 +17,130 @@ Minecraft.tools = new Map([
 ]);
 Minecraft.INIT_BLOCK_COUNT = new Map();     // will be automatically updated if world is changed
 
-/* HARDCODED board */
-Minecraft.world = [
-    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
-    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
-    ["sky", "sky", "sky", "sky", "sky", "sky", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
-    ["sky", "leaf", "leaf", "leaf", "sky", "cloud", "cloud", "cloud", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
-    ["sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
-    ["sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
-    ["sky", "leaf", "tree", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
-    ["sky", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "stone", "sky", "sky", "sky", "sky", "leaf", "tree", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
-    ["sky", "sky", "tree", "sky", "stone", "sky", "sky", "sky", "stone", "stone", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
-    ["sky", "sky", "tree", "sky", "stone", "stone", "sky", "stone", "stone", "stone", "sky", "sky", "stone", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
-    ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "water", "water", "water", "water", "water",],
-    ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "water", "water", "water", "water",],
-    ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
-    ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
-];
+/* HARDCODED board MVP we left ot for you to see how we previously generated our boad */
+// Minecraft.world = [
+//     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+//     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+//     ["sky", "sky", "sky", "sky", "sky", "sky", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+//     ["sky", "leaf", "leaf", "leaf", "sky", "cloud", "cloud", "cloud", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+//     ["sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+//     ["sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+//     ["sky", "leaf", "tree", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+//     ["sky", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "stone", "sky", "sky", "sky", "sky", "leaf", "tree", "leaf", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+//     ["sky", "sky", "tree", "sky", "stone", "sky", "sky", "sky", "stone", "stone", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+//     ["sky", "sky", "tree", "sky", "stone", "stone", "sky", "stone", "stone", "stone", "sky", "sky", "stone", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+//     ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "water", "water", "water", "water", "water",],
+//     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "water", "water", "water", "water",],
+//     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
+//     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
+// ];
+
+/* Random world generator ! */
+Minecraft.randomWorld = function () {
+
+    Minecraft.worldRandomized = [];
+
+    var height = Minecraft.selectedHeight;
+    var width = Minecraft.selectedWidth;
+
+    /* Init the world */
+    for (var i = 0; i < height; i++) {
+        Minecraft.worldRandomized[i] = [];
+    }
+
+    var waterInit = Math.floor(Math.random() * (width - 5));         // random j water init position at grass level
+    var grassInit = Math.round(height / 4);                         //  i where grass will be
+    var treeOneInit = waterInit;
+    var treeTwoInit = waterInit;
+    var stoneOneInit = waterInit;
+    var stoneTwoInit = waterInit;
+    var cloudInit = 0;
+
+    while (treeOneInit >= waterInit && treeOneInit <= waterInit + 4) {        // makes sure the first tree wont build on top of water
+        treeOneInit = Math.floor(Math.random() * (width - 2) + 1);                   // tree not at first and last index (for leaves)
+    }
+    while (treeTwoInit >= waterInit && treeTwoInit <= waterInit + 4 || (treeTwoInit >= treeOneInit - 3 && treeTwoInit <= treeOneInit + 3)) {        // makes sure the second tree wont build on top of water or first tree
+        treeTwoInit = Math.floor(Math.random() * (width - 2) + 1);
+    }
+    while (stoneOneInit >= waterInit - 1 && stoneOneInit <= waterInit + 4 || stoneOneInit >= treeOneInit - 1 && stoneOneInit <= treeOneInit + 1 || stoneOneInit >= treeTwoInit - 1 && stoneOneInit <= treeTwoInit + 1) {
+        stoneOneInit = Math.floor(Math.random() * (width - 2) + 1);
+    }
+
+    while (stoneTwoInit >= waterInit - 1 && stoneTwoInit <= waterInit + 4 || stoneTwoInit >= treeOneInit - 1 && stoneTwoInit <= treeOneInit + 1 || stoneTwoInit >= treeTwoInit - 1 && stoneTwoInit <= treeTwoInit + 1 || stoneTwoInit >= stoneOneInit - 2 && stoneTwoInit <= stoneOneInit + 3) {
+        stoneTwoInit = Math.floor(Math.random() * (width - 2) + 1);
+    }
+
+    cloudInit = Math.floor(Math.random() * (width - 7));
+
+    for (var i = 0; i < height; i++) {
+        for (var j = 0; j < width; j++) {
+            if (i > height - grassInit + 1) {
+                Minecraft.worldRandomized[i][j] = `dirt`;
+            } else if (i === height - grassInit + 1) {
+                (j >= waterInit + 1 && j <= waterInit + 3) ? Minecraft.worldRandomized[i][j] = `water` : Minecraft.worldRandomized[i][j] = `dirt`;
+            } else if (i === height - grassInit) {
+                (j >= waterInit && j <= waterInit + 4) ? Minecraft.worldRandomized[i][j] = `water` : Minecraft.worldRandomized[i][j] = `grass`;
+            } else if (i === height - grassInit - 1 || i === height - grassInit - 2) {
+                if (j === stoneOneInit || j === stoneOneInit + 1) {
+                    Minecraft.worldRandomized[i][j] = `stone`;
+                } else if (j === stoneTwoInit) {
+                    Minecraft.worldRandomized[i][j] = `stone`;
+                } else {
+                    (j === treeOneInit || j === treeTwoInit) ? Minecraft.worldRandomized[i][j] = `tree` : Minecraft.worldRandomized[i][j] = `sky`;           // add rocks here and higher
+                }
+            } else if (i === height - grassInit - 3) {
+                if (j === stoneTwoInit || j === stoneOneInit) {
+                    Minecraft.worldRandomized[i][j] = `stone`;
+                } else if (j === treeOneInit || j === treeTwoInit) {
+                    Minecraft.worldRandomized[i][j] = `tree`;
+                } else if (j === treeOneInit - 1 || j === treeOneInit + 1 || j === treeTwoInit - 1 || j === treeTwoInit + 1) {
+                    Minecraft.worldRandomized[i][j] = `leaf`;
+                } else {
+                    Minecraft.worldRandomized[i][j] = `sky`;
+                }
+            } else if (i === height - grassInit - 4) {
+                if (j === treeOneInit) {
+                    Minecraft.worldRandomized[i][j] = `tree`;
+                } else if (j === treeOneInit - 1 || j === treeOneInit + 1 || j >= treeTwoInit - 1 && j <= treeTwoInit + 1) {
+                    Minecraft.worldRandomized[i][j] = `leaf`;
+                } else {
+                    Minecraft.worldRandomized[i][j] = `sky`;
+                }
+            } else if (i === height - grassInit - 5) {
+                if (j >= treeOneInit - 1 && j <= treeOneInit + 1 || j >= treeTwoInit - 1 && j <= treeTwoInit + 1) {
+                    Minecraft.worldRandomized[i][j] = `leaf`;
+                } else {
+                    Minecraft.worldRandomized[i][j] = `sky`;
+                }
+            } else if (i === height - grassInit - 5 || i === height - grassInit - 6) {
+                if (j >= treeOneInit - 1 && j <= treeOneInit + 1) {
+                    Minecraft.worldRandomized[i][j] = `leaf`;
+                } else {
+                    Minecraft.worldRandomized[i][j] = `sky`;
+                }
+            } else if (i === 3) {
+                if (j >= cloudInit + 2 && j <= cloudInit + 5) {
+                    Minecraft.worldRandomized[i][j] = `cloud`;
+                } else {
+                    Minecraft.worldRandomized[i][j] = `sky`;
+                }
+            } else if (i === 2) {
+                if (j >= cloudInit && j <= cloudInit + 6) {
+                    Minecraft.worldRandomized[i][j] = `cloud`;
+                } else {
+                    Minecraft.worldRandomized[i][j] = `sky`;
+                }
+            } else if (i === 1) {
+                j === cloudInit + 1 ? Minecraft.worldRandomized[i][j] = `cloud` : Minecraft.worldRandomized[i][j] = `sky`;
+            }
+            else {
+                Minecraft.worldRandomized[i][j] = `sky`;
+            }
+        }
+    }
+    Minecraft.world = Minecraft.worldRandomized;     // 
+}
+
 
 /* Generates the world from HARDCODED board */
 Minecraft.generateWorld = function (world) {
@@ -171,6 +280,7 @@ Minecraft.startModal = function () {
 Minecraft.start = function () {
 
     Minecraft.startModal();
+    Minecraft.randomWorld();
     Minecraft.generateWorld(Minecraft.world);
     Minecraft.mouseInteractions();
     Minecraft.initCounterBlocks();
