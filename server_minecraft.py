@@ -1,3 +1,4 @@
+from sys import argv
 from bottle import route, run, static_file, template
 
 
@@ -27,7 +28,7 @@ def sound(filename):
 
 
 def main():
-    run(host='localhost', port=7000)
+    run(host='0.0.0.0', port=argv[1])
 
 
 if __name__ == '__main__':
