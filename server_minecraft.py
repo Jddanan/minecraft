@@ -1,5 +1,6 @@
 from sys import argv
 from bottle import route, run, static_file, template
+import bottle as b
 
 
 @route('/')
@@ -28,7 +29,7 @@ def sound(filename):
 
 
 def main():
-    run(host='0.0.0.0', port=argv[1])
+    b.run(host='0.0.0.0', port=argv[1])
 
 
 if __name__ == '__main__':
